@@ -16,7 +16,7 @@ fann_set_activation_function_output($network, FANN_SIGMOID);
 fann_set_training_algorithm($network, FANN_TRAIN_RPROP);
 fann_set_train_error_function($network, FANN_ERRORFUNC_LINEAR);
 fann_set_train_stop_function($network, FANN_STOPFUNC_MSE);
-fann_set_callback($network, function($ann, $train, $max_epochs, $epochs_between_reports, $desired_error, $epochs) {
+fann_set_callback($network, function($ann, $train, $max_epochs, $epochs_between_reports, $desired_error, $epochs) use ($test_data) {
     $params = getopt('', ['layers::', 'struct::', 'record::']);
     echo sprintf('%.2f', $epochs / $max_epochs * 100) . ' %';
     echo PHP_EOL;
